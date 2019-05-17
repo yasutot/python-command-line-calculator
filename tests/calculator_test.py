@@ -45,3 +45,11 @@ class CalculatorTest(TestCase):
     def test_another_exponentiation(self):
         result = calculator.power(9, -2)
         self.assertEqual(result, 0)
+
+    def test_modulo(self):
+        result = calculator.modulo(10, 3)
+        self.assertEqual(result, 1)
+
+    def test_modulo_again(self):
+        result = calculator.modulo(10, -3)
+        self.assertEqual(result, -2)
