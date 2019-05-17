@@ -30,3 +30,10 @@ class CalculatorTest(TestCase):
     def test_another_multiplication(self):
         result = calculator.multiply(-3, -6)
         self.assertEqual(result, 18)
+
+    def test_divide(self):
+        result = calculator.divide(6, 3)
+        self.assertEqual(result, 2)
+    
+    def test_division_by_zero(self):
+        with self.assertRaises(Exception): calculator.divide(10, 0)
