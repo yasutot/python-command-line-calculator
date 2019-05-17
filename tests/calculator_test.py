@@ -22,3 +22,11 @@ class CalculatorTest(TestCase):
     def test_subtract_negative_numbers(self):
         result = calculator.subtract(-10, -2)
         self.assertEqual(result, -8)
+
+    def test_multiply(self):
+        result = calculator.multiply(5, 5)
+        self.assertEqual(result, 25)
+
+    def test_another_multiplication(self):
+        result = calculator.multiply(-3, -6)
+        self.assertEqual(result, 18)
