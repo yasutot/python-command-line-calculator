@@ -12,3 +12,6 @@ def divide(num1, num2):
         raise Exception("Cannot divide by zero")
 
     return num1 // num2
+
+def power(num1, num2):
+    return int( num1 ** num2 )
