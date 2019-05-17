@@ -37,3 +37,11 @@ class CalculatorTest(TestCase):
     
     def test_division_by_zero(self):
         with self.assertRaises(Exception): calculator.divide(10, 0)
+
+    def test_exponentiation(self):
+        result = calculator.power(3, 3)
+        self.assertEqual(result, 9)
+
+    def test_another_exponentiation(self):
+        result = calculator.power(9, -2)
+        self.assertEqual(result, 0)
