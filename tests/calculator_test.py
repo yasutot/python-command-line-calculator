@@ -40,7 +40,7 @@ class CalculatorTest(TestCase):
 
     def test_exponentiation(self):
         result = calculator.power(3, 3)
-        self.assertEqual(result, 9)
+        self.assertEqual(result, 27)
 
     def test_another_exponentiation(self):
         result = calculator.power(9, -2)
