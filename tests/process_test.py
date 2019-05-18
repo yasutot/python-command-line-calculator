@@ -12,9 +12,17 @@ class CalculatorTest(TestCase):
         self.assertEqual(result, ['123', 'a', 'l', '*', 'ldf'])
 
     def test_are_parenthesis_balanced(self):
-        result = process.test_are_parenthesis_balanced(["(", "(", ")", "(", ")"])
+        result = process.are_parenthesis_balanced(["(", "(", ")", "(", ")"])
         self.assertEqual(result, False)
-    
+
     def test_are_parenthesis_balanced_again(self):
-        result = process.test_are_parenthesis_balanced(["(", "(", ")", "(", "2", "3" ")", ")"])
+        result = process.are_parenthesis_balanced(["(", "(", ")", "(", "2", "3", ")", ")"])
         self.assertEqual(result, True)
+
+    def test_normalize_expression(self):
+        result = process.normalize_expression(["(2*3-13+(03)-2*((3/31)*3)"])
+        self.assertEqual(result, ["(", "2", "*", "3", "-", "13", "+", "(", "03", ")", "-", "2", "*", "(", "(", "3", "/", "31", ")", "*", "3", ")"])
+
+    def test_normalize_expression_with_spaces(self):
+        result = process.normalize_expression(["(  ", "30+2", "152/3-    2"])
+        self.assertEqual(result, ["(", "30", "+", "2", "152", "/", "3", "-", "2"])
