@@ -1,3 +1,7 @@
+from datetime import datetime
+import logging
+
+
 def get_expression_arguments(args):
     head, *tail = args
     return tail
@@ -5,7 +9,8 @@ def get_expression_arguments(args):
 def remove_calculatorpy(expression):
     return [val.replace('calculator.py', '*') for val in expression]
 
-def are_parenthesis_balanced(expression):
+# def are_parenthesis_balanced(expression):
+def check_parenthesis_balance(expression):
     parenthesis_queue = []
     for item in expression:
         if item == '(':
@@ -17,7 +22,8 @@ def are_parenthesis_balanced(expression):
                 parenthesis_queue.append(')')
 
     if len(parenthesis_queue):
-        return False
+        logging.error('Invalid parenthesis')
+        raise Exception('Invalid parenthesis')
 
     return True
 
@@ -91,11 +97,13 @@ def validate_expression(expression):
         if type(value) is not int:
             if str(value) in '+-*/^%()':
                 if not is_symbol_correct(value, next_value, index):
+                    logging.error('Error near symbol ' + value)
                     raise Exception('Error near symbol ' + value)
             else:
                 invalid_chars.append(value)
 
     if len(invalid_chars):
+        logging.error('Invalid characters: ' + ' '.join(invalid_chars))
         raise Exception('Invalid characters: ' + ' '.join(invalid_chars))
     else:
         return True

@@ -1,3 +1,7 @@
+from datetime import datetime
+import logging
+
+
 def sum(num1, num2):
     return int(num1 + num2)
 
@@ -8,9 +12,6 @@ def multiply(num1, num2):
     return int(num1 * num2)
 
 def divide(num1, num2):
-    if (num2 == 0):
-        raise Exception("Cannot divide by zero")
-
     return num1 // num2
 
 def power(num1, num2):
@@ -28,13 +29,15 @@ def calculate(first_val, symbol, sencond_val):
         return multiply(first_val, sencond_val)
     elif symbol == '/':
         if sencond_val == 0:
-            raise Exception("Can't divide by zero: " + first_val, '/', sencond_val)
+            logging.error("Can't divide by zero: " + str(first_val) + '/' + str(sencond_val) )
+            raise Exception("Can't divide by zero: " + str(first_val) + '/' + str(sencond_val))
         return divide(first_val, sencond_val)
     elif symbol == '^':
         return power(first_val, sencond_val)
     elif symbol == '%':
         if sencond_val == 0:
-            raise Exception("Can't divide by zero: " + first_val, '%', str(int(sencond_val)))
+            logging.error("Can't divide by zero: " + str(first_val) + '%' +str(sencond_val) )
+            raise Exception("Can't divide by zero: " + str(first_val) + '%' + str(sencond_val))
         return modulo(first_val, sencond_val)
 
 def calculate_all_occurences_of_operator(segment, operator):
