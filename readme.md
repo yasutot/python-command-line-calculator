@@ -13,6 +13,10 @@ cd python-command-line-calculator
 
 # Calculate
 python3 calculator.py "(2+3)^2/(1+6)"  # 3
+
+
+# Run tests
+python3 -m unittest discover
 ```
 
 ### Usage Examples
