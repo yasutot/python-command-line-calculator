@@ -132,7 +132,7 @@ class CalculatorTest(TestCase):
 
 
     def test_power_symbol_position_as_first_item(self):
-        result = process.is_power_symbol_position_correct('2', 0)
+        result = process.is_power_symbol_position_correct(2, 0)
         self.assertEqual(result, False)
 
     def test_power_symbol_position_as_last_item(self):
@@ -191,11 +191,11 @@ class CalculatorTest(TestCase):
 
 
     def test_expression_validation(self):
-        result = process.validate_expression(['(', '2', '+', '3', ')', '/', '2'])
+        result = process.validate_expression(['(', 2, '+', 3, ')', '/', 2])
         self.assertEqual(result, True)
 
     def test_expression_validation_finishing_multiplication(self):
-        with self.assertRaises(Exception): process.validate_expression(['(', '2', '+', '3', ')', '/', '2', '*'])
+        with self.assertRaises(Exception): process.validate_expression(['(', 2, '+', 3, ')', '/', 2, '*'])
 
     def test_expression_validation_with_parenthesis_only(self):
         with self.assertRaises(Exception): process.validate_expression(['(', ')'])
