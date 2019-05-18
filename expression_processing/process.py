@@ -21,9 +21,6 @@ def are_parenthesis_balanced(expression):
 
     return True
 
-def get_expression_without_spaces(expression):
-    return [item.strip() for item in expression]
-
 def normalize_expression(expression):
     normalized = []
     for segment in expression:
