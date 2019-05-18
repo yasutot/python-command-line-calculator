@@ -50,3 +50,6 @@ def normalize_expression(expression):
 
 def is_close_parenthesis_position_correct(next_val, index):
     return index != 0 and (next_val in '+-*/%^)' or next_val == '')
+
+def is_open_parenthesis_position_correct(next_val, index):
+    return next_val != '' and (next_val in '(+-' or next_val.isdigit())

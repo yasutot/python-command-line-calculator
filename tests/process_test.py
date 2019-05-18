@@ -38,3 +38,19 @@ class CalculatorTest(TestCase):
     def test_close_parenthesis_position_followed_by_open_parenthesis(self):
         result = process.is_close_parenthesis_position_correct('(', 6)
         self.assertEqual(result, False)
+
+    def test_close_parenthesis_position_followed_by_number(self):
+        result = process.is_close_parenthesis_position_correct('123', 6)
+        self.assertEqual(result, False)
+
+    def test_open_parenthesis_position_as_first_item(self):
+        result = process.is_open_parenthesis_position_correct('+', 0)
+        self.assertEqual(result, True)
+
+    def test_open_parenthesis_position_as_last_item(self):
+        result = process.is_open_parenthesis_position_correct('', 3)
+        self.assertEqual(result, False)
+
+    def test_open_parenthesis_position_followed_by_closing_parenthesis(self):
+        result = process.is_open_parenthesis_position_correct(')', 6)
+        self.assertEqual(result, False)
