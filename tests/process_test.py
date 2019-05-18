@@ -188,3 +188,19 @@ class CalculatorTest(TestCase):
     def test_subtraction_symbol_position_followed_by_open_parenthesis(self):
         result = process.is_subtraction_symbol_position_correct('(')
         self.assertEqual(result, True)
+
+
+    def test_expression_validation(self):
+        result = process.validate_expression(['(','2','+','3',')','/','2'])
+        self.assertEqual(result, True)
+
+    def test_expression_validation_finishing_multiplication(self):
+        with self.assertRaises(Exception): process.validate_expression(['(','2','+','3',')','/','2','*'])
+
+    def test_expression_validation_with_parenthesis_only(self):
+        with self.assertRaises(Exception): process.validate_expression(['(',')'])
+
+
+    def test_calulate_expression_segment(self):
+        result = process.calulate_expression_segment(['(','3','+','6',')','/','3'])
+        self.assertEqual(result, '3')
