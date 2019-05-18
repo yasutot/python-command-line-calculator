@@ -11,12 +11,11 @@ class CalculatorTest(TestCase):
         result = process.remove_calculatorpy(['123', 'a', 'l', 'calculator.py', 'ldf'])
         self.assertEqual(result, ['123', 'a', 'l', '*', 'ldf'])
 
-    def test_are_parenthesis_balanced(self):
-        result = process.are_parenthesis_balanced(['(', '(', ')', '(', ')'])
-        self.assertEqual(result, False)
+    def test_check_parenthesis_balance(self):
+        with self.assertRaises(Exception): process.check_parenthesis_balance(['(', '(', ')', '(', ')'])
 
-    def test_are_parenthesis_balanced_again(self):
-        result = process.are_parenthesis_balanced(['(', '(', ')', '(', '2', '3', ')', ')'])
+    def test_check_parenthesis_balance_again(self):
+        result = process.check_parenthesis_balance(['(', '(', ')', '(', '2', '3', ')', ')'])
         self.assertEqual(result, True)
 
     def test_normalize_expression(self):
