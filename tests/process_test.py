@@ -4,28 +4,28 @@ from expression_processing import process
 class CalculatorTest(TestCase):
 
     def test_get_expression_arguments(self):
-        result = process.get_expression_arguments(["a", "b", "c"])
-        self.assertEqual(result, ["b", "c"])
+        result = process.get_expression_arguments(['a', 'b', 'c'])
+        self.assertEqual(result, ['b', 'c'])
 
     def test_remove_calculatorpy(self):
         result = process.remove_calculatorpy(['123', 'a', 'l', 'calculator.py', 'ldf'])
         self.assertEqual(result, ['123', 'a', 'l', '*', 'ldf'])
 
     def test_are_parenthesis_balanced(self):
-        result = process.are_parenthesis_balanced(["(", "(", ")", "(", ")"])
+        result = process.are_parenthesis_balanced(['(', '(', ')', '(', ')'])
         self.assertEqual(result, False)
 
     def test_are_parenthesis_balanced_again(self):
-        result = process.are_parenthesis_balanced(["(", "(", ")", "(", "2", "3", ")", ")"])
+        result = process.are_parenthesis_balanced(['(', '(', ')', '(', '2', '3', ')', ')'])
         self.assertEqual(result, True)
 
     def test_normalize_expression(self):
-        result = process.normalize_expression(["(2*3-13+(03)-2*((3/31)*3)"])
-        self.assertEqual(result, ["(", 2, "*", 3, "-", 13, "+", "(", 3, ")", "-", 2, "*", "(", "(", 3, "/", 31, ")", "*", 3, ")"])
+        result = process.normalize_expression(['(2*3-13+(03)-2*((3/31)*3)'])
+        self.assertEqual(result, ['(', 2, '*', 3, '-', 13, '+', '(', 3, ')', '-', 2, '*', '(', '(', 3, '/', 31, ')', '*', 3, ')'])
 
     def test_normalize_expression_with_spaces(self):
-        result = process.normalize_expression(["(  ", "30+2", "152/3-    2"])
-        self.assertEqual(result, ["(", 30, "+", 2, 152, "/", 3, "-", 2])
+        result = process.normalize_expression(['(  ', '30+2', '152/3-    2'])
+        self.assertEqual(result, ['(', 30, '+', 2, 152, '/', 3, '-', 2])
 
     def test_close_parenthesis_position_as_first_item(self):
         result = process.is_close_parenthesis_position_correct('+', 0)
@@ -191,11 +191,11 @@ class CalculatorTest(TestCase):
 
 
     def test_expression_validation(self):
-        result = process.validate_expression(['(','2','+','3',')','/','2'])
+        result = process.validate_expression(['(', '2', '+', '3', ')', '/', '2'])
         self.assertEqual(result, True)
 
     def test_expression_validation_finishing_multiplication(self):
-        with self.assertRaises(Exception): process.validate_expression(['(','2','+','3',')','/','2','*'])
+        with self.assertRaises(Exception): process.validate_expression(['(', '2', '+', '3', ')', '/', '2', '*'])
 
     def test_expression_validation_with_parenthesis_only(self):
-        with self.assertRaises(Exception): process.validate_expression(['(',')'])
+        with self.assertRaises(Exception): process.validate_expression(['(', ')'])

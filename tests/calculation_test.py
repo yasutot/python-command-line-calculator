@@ -10,7 +10,7 @@ class calculationTest(TestCase):
     def test_another_sum(self):
         result = calculation.sum(10, 23)
         self.assertEqual(result, 33)
-    
+
     def test_sum_negative_numbers(self):
         result = calculation.sum(-3, -18)
         self.assertEqual(result, -21)
@@ -34,7 +34,7 @@ class calculationTest(TestCase):
     def test_divide(self):
         result = calculation.divide(6, 3)
         self.assertEqual(result, 2)
-    
+
     def test_division_by_zero(self):
         with self.assertRaises(Exception): calculation.divide(10, 0)
 
@@ -62,25 +62,25 @@ class calculationTest(TestCase):
         with self.assertRaises(Exception): calculation.calculate(12, '/', 0)
 
     def test_calculate_occurences_of_multiplication(self):
-        result = calculation.calculate_all_occurences_of_operator([2,'*',3,'+',1,'-',0], '*')
+        result = calculation.calculate_all_occurences_of_operator([2, '*', 3, '+', 1, '-', 0], '*')
         self.assertEqual(result, [6, '+', 1, '-', 0])
 
     def test_calculate_occurences_of_multiple_multiplications(self):
-        result = calculation.calculate_all_occurences_of_operator([2,'*',3,'+',1,'-',0, '-', 5, '*', 100, '-', 2], '*')
+        result = calculation.calculate_all_occurences_of_operator([2, '*', 3, '+', 1, '-', 0, '-', 5, '*', 100, '-', 2], '*')
         self.assertEqual(result, [6,'+',1,'-',0, '-', 500, '-', 2])
 
     def test_calulate_expression_segment(self):
-        result = calculation.calculate_expression_segment([3,'+',6,'/',3])
+        result = calculation.calculate_expression_segment([3, '+', 6, '/', 3])
         self.assertEqual(result, 5)
 
     def test_calculate_expression_segment_without_parenthesis(self):
-        result = calculation.calculate_expression_segment([2,'*',3,'+',1,'-',0, '-', 5, '*', 100, '-', 2])
+        result = calculation.calculate_expression_segment([2, '*', 3, '+', 1, '-', 0, '-', 5, '*', 100, '-', 2])
         self.assertEqual(result, -495)
 
     def test_calculate_entire_parenthesis(self):
-        result = calculation.calculate_expression(['(',2,'*',3,'+',2,')','/','(',2,'^',2,')','-','(',3, '-', 5,')', '*', 100, '-', 2])
+        result = calculation.calculate_expression(['(', 2, '*', 3, '+', 2, ')', '/', '(', 2, '^', 2, ')', '-', '(', 3, '-', 5, ')', '*', 100, '-', 2])
         self.assertEqual(result, 200)
 
     def test_calculate_entire_parenthesis2(self):
-        result = calculation.calculate_expression([2,'*',3,'+',2,'/',2,'^',2,'-',3, '-', 5, '*', 100, '-', 2])
+        result = calculation.calculate_expression([2, '*', 3, '+', 2, '/', 2, '^', 2, '-', 3, '-', 5, '*', 100, '-', 2])
         self.assertEqual(result, -498)
