@@ -48,11 +48,26 @@ def normalize_expression(expression):
 
     return normalized
 
-def is_close_parenthesis_position_correct(next_val, index):
-    return index != 0 and (next_val in '+-*/%^)' or next_val == '')
+def is_sum_symbol_position_correct(next_val):
+    return next_val.isdigit() or next_val == "("
+
+def is_subtraction_symbol_position_correct(next_val):
+    return next_val.isdigit() or next_val == "(" 
+
+def is_multiplication_symbol_position_correct(next_val, index):
+    return index != 0 and next_val != '' and (next_val.isdigit() or next_val in "(+-")
+
+def is_division_symbol_position_correct(next_val, index):
+    return index != 0 and next_val != '' and (next_val.isdigit() or next_val in "(+-")
+
+def is_mod_symbol_position_correct(next_val, index):
+    return index != 0  and next_val != '' and (next_val.isdigit() or next_val in "(+-")
+
+def is_power_symbol_position_correct(next_val, index):
+    return index != 0 and next_val != '' and (next_val.isdigit() or next_val in '(+-')
 
 def is_open_parenthesis_position_correct(next_val, index):
     return next_val != '' and (next_val in '(+-' or next_val.isdigit())
 
-def is_power_symbol_position_correct(next_val, index):
-    return index != 0 and next_val != '' and (next_val in '(+-' or next_val.isdigit())
+def is_close_parenthesis_position_correct(next_val, index):
+    return index != 0 and (next_val in '+-*/%^)' or next_val == '')

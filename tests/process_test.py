@@ -55,6 +55,82 @@ class CalculatorTest(TestCase):
         result = process.is_open_parenthesis_position_correct(')', 6)
         self.assertEqual(result, False)
 
+
+    def test_multiplication_symbol_position_as_first_item(self):
+        result = process.is_multiplication_symbol_position_correct('2', 0)
+        self.assertEqual(result, False)
+
+    def test_multiplication_symbol_position_as_last_item(self):
+        result = process.is_multiplication_symbol_position_correct('', 3)
+        self.assertEqual(result, False)
+
+    def test_multiplication_symbol_position_followed_by_sum_operator_symbol(self):
+        result = process.is_multiplication_symbol_position_correct('+', 6)
+        self.assertEqual(result, True)
+    
+    def test_multiplication_symbol_position_followed_by_multiplication_operator_symbol(self):
+        result = process.is_multiplication_symbol_position_correct('*', 6)
+        self.assertEqual(result, False)
+
+    def test_multiplication_symbol_position_followed_by_close_parenthesis(self):
+        result = process.is_multiplication_symbol_position_correct(')', 6)
+        self.assertEqual(result, False)
+
+    def test_multiplication_symbol_position_followed_by_open_parenthesis(self):
+        result = process.is_multiplication_symbol_position_correct('(', 6)
+        self.assertEqual(result, True)
+
+
+    def test_division_symbol_position_as_first_item(self):
+        result = process.is_division_symbol_position_correct('2', 0)
+        self.assertEqual(result, False)
+
+    def test_division_symbol_position_as_last_item(self):
+        result = process.is_division_symbol_position_correct('', 3)
+        self.assertEqual(result, False)
+
+    def test_division_symbol_position_followed_by_sum_operator_symbol(self):
+        result = process.is_division_symbol_position_correct('+', 6)
+        self.assertEqual(result, True)
+    
+    def test_division_symbol_position_followed_by_multiplication_operator_symbol(self):
+        result = process.is_division_symbol_position_correct('*', 6)
+        self.assertEqual(result, False)
+
+    def test_division_symbol_position_followed_by_close_parenthesis(self):
+        result = process.is_division_symbol_position_correct(')', 6)
+        self.assertEqual(result, False)
+
+    def test_division_symbol_position_followed_by_open_parenthesis(self):
+        result = process.is_division_symbol_position_correct('(', 6)
+        self.assertEqual(result, True)
+
+
+    def test_mod_symbol_position_as_first_item(self):
+        result = process.is_mod_symbol_position_correct('2', 0)
+        self.assertEqual(result, False)
+
+    def test_mod_symbol_position_as_last_item(self):
+        result = process.is_mod_symbol_position_correct('', 3)
+        self.assertEqual(result, False)
+
+    def test_mod_symbol_position_followed_by_sum_operator_symbol(self):
+        result = process.is_mod_symbol_position_correct('+', 6)
+        self.assertEqual(result, True)
+    
+    def test_mod_symbol_position_followed_by_multiplication_operator_symbol(self):
+        result = process.is_mod_symbol_position_correct('*', 6)
+        self.assertEqual(result, False)
+
+    def test_mod_symbol_position_followed_by_close_parenthesis(self):
+        result = process.is_mod_symbol_position_correct(')', 6)
+        self.assertEqual(result, False)
+
+    def test_mod_symbol_position_followed_by_open_parenthesis(self):
+        result = process.is_mod_symbol_position_correct('(', 6)
+        self.assertEqual(result, True)
+
+
     def test_power_symbol_position_as_first_item(self):
         result = process.is_power_symbol_position_correct('2', 0)
         self.assertEqual(result, False)
@@ -63,6 +139,52 @@ class CalculatorTest(TestCase):
         result = process.is_power_symbol_position_correct('', 3)
         self.assertEqual(result, False)
 
-    def test_power_symbol_position_followed_by_multiplication_symbol(self):
+    def test_power_symbol_position_followed_by_sum_operator_symbol(self):
+        result = process.is_power_symbol_position_correct('+', 6)
+        self.assertEqual(result, True)
+    
+    def test_power_symbol_position_followed_by_multiplication_operator_symbol(self):
         result = process.is_power_symbol_position_correct('*', 6)
         self.assertEqual(result, False)
+
+    def test_power_symbol_position_followed_by_close_parenthesis(self):
+        result = process.is_power_symbol_position_correct(')', 6)
+        self.assertEqual(result, False)
+
+    def test_power_symbol_position_followed_by_open_parenthesis(self):
+        result = process.is_power_symbol_position_correct('(', 6)
+        self.assertEqual(result, True)
+
+
+    def test_sum_symbol_position_followed_by_sum_operator_symbol(self):
+        result = process.is_sum_symbol_position_correct('+')
+        self.assertEqual(result, False)
+    
+    def test_sum_symbol_position_followed_by_multiplication_operator_symbol(self):
+        result = process.is_sum_symbol_position_correct('*')
+        self.assertEqual(result, False)
+
+    def test_sum_symbol_position_followed_by_close_parenthesis(self):
+        result = process.is_sum_symbol_position_correct(')')
+        self.assertEqual(result, False)
+
+    def test_sum_symbol_position_followed_by_open_parenthesis(self):
+        result = process.is_sum_symbol_position_correct('(')
+        self.assertEqual(result, True)
+
+
+    def test_subtraction_symbol_position_followed_by_sum_operator_symbol(self):
+        result = process.is_subtraction_symbol_position_correct('+')
+        self.assertEqual(result, False)
+    
+    def test_subtraction_symbol_position_followed_by_multiplication_operator_symbol(self):
+        result = process.is_subtraction_symbol_position_correct('*')
+        self.assertEqual(result, False)
+
+    def test_subtraction_symbol_position_followed_by_close_parenthesis(self):
+        result = process.is_subtraction_symbol_position_correct(')')
+        self.assertEqual(result, False)
+
+    def test_subtraction_symbol_position_followed_by_open_parenthesis(self):
+        result = process.is_subtraction_symbol_position_correct('(')
+        self.assertEqual(result, True)
