@@ -25,14 +25,14 @@ def normalize_expression(expression):
     normalized = []
     for segment in expression:
         if segment.isdigit():
-            normalized.append(segment)
+            normalized.append(int(segment))
 
         else:
             digits = ''
             for char in segment:
                 if char == ' ':
                     if len(digits):
-                        normalized.append(digits)
+                        normalized.append(int(digits))
                         digits = ''
                         continue
 
@@ -40,11 +40,11 @@ def normalize_expression(expression):
                     digits = digits + char
                 
                 else:
-                    if len(digits): normalized.append(digits)
+                    if len(digits): normalized.append(int(digits))
                     normalized.append(char)
                     digits = ''
 
-            if len(digits): normalized.append(digits)
+            if len(digits): normalized.append(int(digits))
 
     return normalized
 

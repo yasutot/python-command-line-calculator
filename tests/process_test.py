@@ -21,11 +21,11 @@ class CalculatorTest(TestCase):
 
     def test_normalize_expression(self):
         result = process.normalize_expression(["(2*3-13+(03)-2*((3/31)*3)"])
-        self.assertEqual(result, ["(", "2", "*", "3", "-", "13", "+", "(", "03", ")", "-", "2", "*", "(", "(", "3", "/", "31", ")", "*", "3", ")"])
+        self.assertEqual(result, ["(", 2, "*", 3, "-", 13, "+", "(", 3, ")", "-", 2, "*", "(", "(", 3, "/", 31, ")", "*", 3, ")"])
 
     def test_normalize_expression_with_spaces(self):
         result = process.normalize_expression(["(  ", "30+2", "152/3-    2"])
-        self.assertEqual(result, ["(", "30", "+", "2", "152", "/", "3", "-", "2"])
+        self.assertEqual(result, ["(", 30, "+", 2, 152, "/", 3, "-", 2])
 
     def test_close_parenthesis_position_as_first_item(self):
         result = process.is_close_parenthesis_position_correct('+', 0)
@@ -199,8 +199,3 @@ class CalculatorTest(TestCase):
 
     def test_expression_validation_with_parenthesis_only(self):
         with self.assertRaises(Exception): process.validate_expression(['(',')'])
-
-
-    def test_calulate_expression_segment(self):
-        result = process.calulate_expression_segment(['(','3','+','6',')','/','3'])
-        self.assertEqual(result, '3')

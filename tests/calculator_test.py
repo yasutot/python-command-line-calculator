@@ -55,16 +55,32 @@ class calculationTest(TestCase):
         self.assertEqual(result, -2)
 
     def test_calculate(self):
-        result = calculation.calculate('12', '-', '3')
+        result = calculation.calculate(12, '-', 3)
         self.assertEqual(result, 9)
 
     def test_calculate_division_by_zero(self):
-        with self.assertRaises(Exception): calculation.calculate('12', '/', '0')
+        with self.assertRaises(Exception): calculation.calculate(12, '/', 0)
 
     def test_calculate_occurences_of_multiplication(self):
-        result = calculation.calculate_all_occurences_of_operator(['2','*','3','+','1','-','0'], '*')
-        self.assertEqual(result, ['6', '+', '1', '-', '0'])
+        result = calculation.calculate_all_occurences_of_operator([2,'*',3,'+',1,'-',0], '*')
+        self.assertEqual(result, [6, '+', 1, '-', 0])
 
     def test_calculate_occurences_of_multiple_multiplications(self):
-        result = calculation.calculate_all_occurences_of_operator(['2','*','3','+','1','-','0', '-', '5', '*', '100', '-', '2'], '*')
-        self.assertEqual(result, ['6','+','1','-','0', '-', '500', '-', '2'])
+        result = calculation.calculate_all_occurences_of_operator([2,'*',3,'+',1,'-',0, '-', 5, '*', 100, '-', 2], '*')
+        self.assertEqual(result, [6,'+',1,'-',0, '-', 500, '-', 2])
+
+    def test_calulate_expression_segment(self):
+        result = calculation.calculate_expression_segment([3,'+',6,'/',3])
+        self.assertEqual(result, 5)
+
+    def test_calculate_expression_segment_without_parenthesis(self):
+        result = calculation.calculate_expression_segment([2,'*',3,'+',1,'-',0, '-', 5, '*', 100, '-', 2])
+        self.assertEqual(result, -495)
+
+    def test_calculate_entire_parenthesis(self):
+        result = calculation.calculate_expression(['(',2,'*',3,'+',2,')','/','(',2,'^',2,')','-','(',3, '-', 5,')', '*', 100, '-', 2])
+        self.assertEqual(result, 200)
+
+    def test_calculate_entire_parenthesis2(self):
+        result = calculation.calculate_expression([2,'*',3,'+',2,'/',2,'^',2,'-',3, '-', 5, '*', 100, '-', 2])
+        self.assertEqual(result, -498)
