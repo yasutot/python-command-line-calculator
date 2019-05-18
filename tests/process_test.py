@@ -57,7 +57,7 @@ class CalculatorTest(TestCase):
 
     def test_power_symbol_position_as_first_item(self):
         result = process.is_power_symbol_position_correct('2', 0)
-        self.assertEqual(result, True)
+        self.assertEqual(result, False)
 
     def test_power_symbol_position_as_last_item(self):
         result = process.is_power_symbol_position_correct('', 3)
