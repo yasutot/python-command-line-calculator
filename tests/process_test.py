@@ -26,3 +26,15 @@ class CalculatorTest(TestCase):
     def test_normalize_expression_with_spaces(self):
         result = process.normalize_expression(["(  ", "30+2", "152/3-    2"])
         self.assertEqual(result, ["(", "30", "+", "2", "152", "/", "3", "-", "2"])
+
+    def test_close_parenthesis_position_as_first_item(self):
+        result = process.is_close_parenthesis_position_correct('+', 0)
+        self.assertEqual(result, False)
+
+    def test_close_parenthesis_position_as_last_item(self):
+        result = process.is_close_parenthesis_position_correct('', 3)
+        self.assertEqual(result, True)
+
+    def test_close_parenthesis_position_followed_by_open_parenthesis(self):
+        result = process.is_close_parenthesis_position_correct('(', 6)
+        self.assertEqual(result, False)
